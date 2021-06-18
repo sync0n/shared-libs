@@ -14,7 +14,7 @@ def call(String propFilePath) {
     String zipName = null
 
     pipeline {
-        agent { label 'dockerpre-build' }
+        agent { image 'node:14-alpine' }
         options {
             timeout(time: globalVars.buildPipelineTimeout, unit: 'MINUTES')
         }
