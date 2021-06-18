@@ -23,17 +23,6 @@ def call(String propFilePath) {
                 steps {
                     bitbucketStatusNotify(buildState: 'INPROGRESS')
                     script {
-                        slackResponse = slackSend(
-                            channel: "#${globalVars.slackChannel}",
-                            color: '#D4DADF',
-                            message: "STARTED: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n(${env.BUILD_URL})"
-                        )
-                        slackSend (
-                            channel: slackResponse.threadId,
-                            color: '#8BE206',
-                            message: "BUILD IN PROGRESS: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n(${env.BUILD_URL})"
-                        )
-
                         props = readProperties(file: propFilePath)
                         log.info("Application Name: ${props.appName}")
                         log.info("GIT Branch: ${env.GIT_BRANCH}")
