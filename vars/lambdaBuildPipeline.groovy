@@ -21,7 +21,6 @@ def call(String propFilePath) {
         stages {
             stage('Compile') {
                 steps {
-                    bitbucketStatusNotify(buildState: 'INPROGRESS')
                     script {
                         props = readProperties(file: propFilePath)
                         log.info("Application Name: ${props.appName}")
